@@ -4,6 +4,7 @@ import './styles/normalize.css'
 import './styles/base.css'
 import axios from 'axios'
 import NavBar from './components/common/NavBar'
+import Toast from './components/common/Toast';
 
 interface Iuser {
   name?: string
@@ -22,6 +23,7 @@ const App: React.FC = () => {
   }
   return (
     <div className="App">
+      <Toast content="Do you miss me?" />
       <button className="cl-p fs-12" onClick={() => handleClick('haha')}>点击请求数据</button>
       {user.name && <div>{user.name}</div>}
       {user.age && <div>{user.age}</div>}

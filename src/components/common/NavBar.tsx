@@ -9,13 +9,30 @@ const NavBar: React.FC = () => {
     color:white;
     font-size:14px;
     height:50px;
+    display:flex;
+  `;
+  const Tab = styled.div`
+    flex:1;
   `;
 
+  const navList: { icon: string, name: string }[] = [
+    { icon: 'home', name: '首页' },
+    { icon: 'chazhao', name: '查找' },
+    { icon: 'keji-', name: '科技' },
+    { icon: 'baozhi', name: '报纸' },
+    { icon: 'mine', name: '我的' }
+  ]
   return (
     <nav className="ps-fix-b">
       <Container>
-        {/* <i className="iconfont">&#xe67f;</i> */}
-        <Icon name="&#xe67f;" size="40"/>
+        {navList.map(i => {
+          return (
+            <Tab key={i.icon} className="dp-fl-c-c">
+              <Icon name={i.icon} size="20" />
+              <span>{i.name}</span>
+            </Tab>
+            );
+        })}
       </Container>
     </nav>
   )
