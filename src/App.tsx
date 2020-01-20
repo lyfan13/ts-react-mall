@@ -1,35 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import './styles/normalize.css'
 import './styles/base.css'
-import axios from 'axios'
+// import axios from 'axios'
 import NavBar from './components/common/NavBar'
-import Toast from './components/common/Toast';
+// import Toast from './components/common/Toast';
+// import TestDiv from './components/test/TestDiv';
+import Home from './pages/Home';
+import search from './pages/Search';
+import tech from './pages/Tech';
+import news from './pages/News';
+import mine from './pages/Mine';
 
-interface Iuser {
-  name?: string
-  age?: number
-}
 
 const App: React.FC = () => {
 
-  const [user, setUser] = useState<Iuser>({});
-  const numbers = [1, 2, 3, 4, 5]
-  async function handleClick(name: string) {
-    console.log(`handleClick:${name}`)
-    const res = await axios.get('http://localhost:4000/test')
-    console.log(res)
-    setUser(res.data)
-  }
+
   return (
     <div className="App">
-      <Toast content="Do you miss me?" />
-      <button className="cl-p fs-12" onClick={() => handleClick('haha')}>点击请求数据</button>
-      {user.name && <div>{user.name}</div>}
-      {user.age && <div>{user.age}</div>}
-      <ul>
-        {numbers.map(number => <li key={number}>{number}</li>)}
-      </ul>
+      {/* <TestDiv change={handleChange} /> */}
+      <Switch>
+        <Route path="/home" component={Home} />
+        <Route path="/search" component={search} />
+        <Route path="/tech" component={tech} />
+        <Route path="/news" component={news} />
+        <Route path="/mine" component={mine} />
+      </Switch>
       <NavBar />
     </div>
   );
